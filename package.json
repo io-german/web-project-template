@@ -1,6 +1,6 @@
 {
-  "name": "tic-tac-toe",
-  "description": "Simple JS game",
+  "name": "gulp-babel-jade-stylus template",
+  "description": "Project template",
   "version": "0.0.1",
   "devDependencies": {
     "gulp": "~3.9.0",

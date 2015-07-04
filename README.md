@@ -1,1 +1,1 @@
-Tic-tac-toe game for browsers.
+Web project template.
