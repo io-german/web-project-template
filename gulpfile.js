@@ -1,20 +1,36 @@
 var gulp = require('gulp');
 var jade = require('gulp-jade');
 var stylus = require('gulp-stylus');
-var babel = require('gulp-babel');
+var webpack = require('gulp-webpack');
 
 var paths = {
   templates: 'src/templates/**/*.jade',
   styles: 'src/styles/**/*.stylus',
-  scripts: 'src/scripts/main.js',
-  allScripts: 'src/scripts/**/*.js'
+  script: 'src/scripts/main.coffee',
+  allScripts: 'src/scripts/**/*.coffee'
+}
+
+var config = {
+  jade: {
+    pretty: true
+  },
+  webpack: {
+    entry: './src/scripts/main.coffee',
+    output: {
+      filename: 'main.js'
+    },
+    module: {
+      loaders: [{
+        test: /\.coffee$/,
+        loader: 'coffee-loader'
+      }]
+    }
+  }
 }
 
 gulp.task('html', function() {
   gulp.src(paths.templates)
-    .pipe(jade({
-      pretty: true
-    }))
+    .pipe(jade(config.jade))
     .pipe(gulp.dest('dest/'))
 });
 
@@ -25,8 +41,8 @@ gulp.task('css', function() {
 });
 
 gulp.task('js', function() {
-  gulp.src(paths.scripts)
-    .pipe(babel())
+  gulp.src(paths.script)
+    .pipe(webpack(config.webpack))
     .pipe(gulp.dest('dest/js/'));
 });
 
