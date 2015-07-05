@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var jade = require('gulp-jade');
 var stylus = require('gulp-stylus');
 var webpack = require('gulp-webpack');
+var plumber = require('gulp-plumber');
 
 var paths = {
   templates: 'src/templates/**/*.jade',
@@ -30,18 +31,21 @@ var config = {
 
 gulp.task('html', function() {
   gulp.src(paths.templates)
+    .pipe(plumber())
     .pipe(jade(config.jade))
     .pipe(gulp.dest('dest/'))
 });
 
 gulp.task('css', function() {
   gulp.src(paths.styles)
+    .pipe(plumber())
     .pipe(stylus())
     .pipe(gulp.dest('dest/css/'));
 });
 
 gulp.task('js', function() {
   gulp.src(paths.script)
+    .pipe(plumber())
     .pipe(webpack(config.webpack))
     .pipe(gulp.dest('dest/js/'));
 });
