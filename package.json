@@ -1,5 +1,5 @@
 {
-  "name": "gulp-babel-jade-stylus-template",
+  "name": "gulp-coffee-jade-stylus-template",
   "description": "Project template",
   "version": "0.0.1",
   "devDependencies": {
