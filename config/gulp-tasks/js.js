@@ -19,7 +19,7 @@ var config = {
 
 gulp.task('js', function() {
   gulp.src(paths.allScripts)
-    .pipe(lint(__dirname + '/coffeelint.json'))
+    .pipe(lint(__dirname + '/../coffeelint.json'))
     .pipe(lint.reporter());
 
   gulp.src(paths.script)

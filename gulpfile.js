@@ -1,11 +1,11 @@
 var gulp = require('gulp');
-var paths = require('./gulp-tasks/paths');
+var paths = require('./config/gulp-tasks/paths');
 
-require('./gulp-tasks/clean');
-require('./gulp-tasks/html');
-require('./gulp-tasks/css');
-require('./gulp-tasks/js.js');
-require('./gulp-tasks/test.js');
+require('./config/gulp-tasks/clean');
+require('./config/gulp-tasks/html');
+require('./config/gulp-tasks/css');
+require('./config/gulp-tasks/js.js');
+require('./config/gulp-tasks/test.js');
 
 gulp.task('watch', function() {
   gulp.watch(paths.templates, ['html']);
