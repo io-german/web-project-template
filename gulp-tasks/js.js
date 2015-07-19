@@ -1,7 +1,8 @@
 var gulp = require('gulp');
+var lint = require('gulp-coffeelint');
+var paths = require('./paths');
 var plumber = require('gulp-plumber');
 var webpack = require('gulp-webpack');
-var paths = require('./paths');
 
 var config = {
   entry: './src/scripts/main.coffee',
@@ -17,6 +18,10 @@ var config = {
 };
 
 gulp.task('js', function() {
+  gulp.src(paths.allScripts)
+    .pipe(lint())
+    .pipe(lint.reporter());
+
   gulp.src(paths.script)
     .pipe(plumber())
     .pipe(webpack(config))
